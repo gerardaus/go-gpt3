@@ -108,5 +108,5 @@ func (c *Client) CreateCompletion(
 		return CompletionResponse{}, err
 	}
 
-	return &response, nil
+	return response, nil
 }
