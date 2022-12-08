@@ -15,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	. "github.com/sashabaranov/go-gpt3"
+	. "github.com/gerardaus/go-gpt3"
 )
 
 const (
