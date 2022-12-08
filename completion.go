@@ -93,16 +93,20 @@ func (c *Client) CreateCompletion(
 	var reqBytes []byte
 	reqBytes, err = json.Marshal(request)
 	if err != nil {
-		return
+		return CompletionResponse{}, err
 	}
 
 	urlSuffix := "/completions"
 	req, err := http.NewRequest("POST", c.fullURL(urlSuffix), bytes.NewBuffer(reqBytes))
 	if err != nil {
-		return
+		return CompletionResponse{}, err
 	}
 
 	req = req.WithContext(ctx)
 	err = c.sendRequest(req, &response)
-	return
+	if err != nil {
+		return CompletionResponse{}, err
+	}
+
+	return &response, nil
 }
